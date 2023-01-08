@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, Animated, LayoutAnimation } from 'react-native';
-import { obstacleX } from './MovingObstacle';
+import MovingObstacle from './objects/MovingObstacle';
+import collisionDetection from './objects/collisionDetection';
+import Bird from './objects/Bird';
 
 const ANIMATION_DURATION = 1000;
 
@@ -8,30 +10,32 @@ const FlappyBird = () => {
   const [birdY, setBirdY] = useState(0);
   const [birdRotation, setBirdRotation] = useState(new Animated.Value(0));
   const [gameOver, setGameOver] = useState(false);
-
+  const obstacles = [
+    { x: 300, y: 10, width: 100, height: 200 },
+  ];
   const onPress = () => {
     // Make the bird flap its wings
     LayoutAnimation.configureNext({
       duration: ANIMATION_DURATION,
       update: {
-        type: LayoutAnimation.Types.easeInOut,
+        type: LayoutAnimation.Types.easeOut,
       },
     });
-    setBirdY(birdY - 50);
+    setBirdY(birdY  - 100);
 
     // Animate the rotation of the bird
     Animated.timing(birdRotation, {
-      toValue: -45,
+      toValue: 43,
       duration: ANIMATION_DURATION,
       useNativeDriver: true,
     }).start(() => {
       LayoutAnimation.configureNext({
         duration: ANIMATION_DURATION,
         update: {
-          type: LayoutAnimation.Types.easeInOut,
+          type: LayoutAnimation.Types.easeOut,
         },
       });
-      setBirdY(birdY + 50);
+      setBirdY(birdY + 50 );
       Animated.timing(birdRotation, {
         toValue: 0,
         duration: ANIMATION_DURATION,
@@ -43,11 +47,10 @@ const FlappyBird = () => {
   return (
     <View style={styles.container}>
       <Image style={styles.background} source={require('./assets/background.png')} />
-      <View style={styles.obstaclesContainer}>
-        {/* Render the obstacles here */}
+      <View>
       </View>
       <Animated.Image
-        style={[styles.bird, { top: birdY, transform: [{ rotate: `45deg` }] }]}
+        style={[styles.bird, { top: birdY, transform: [{ rotate: '10deg' }] }]}
         source={require('./assets/bird.png')}
       />
       <Image style={styles.ground} source={require('./assets/ground.png')} />
@@ -60,6 +63,11 @@ const FlappyBird = () => {
           <Button title="Play Again" onPress={() => setGameOver(false)} />
         </Modal>
       )}
+       <View style={styles.container}>
+       {obstacles.map(obstacle => (
+        <MovingObstacle key={obstacle} {...obstacle} />
+        ))}
+    </View>
     </View>
   );
 };
@@ -76,7 +84,6 @@ const styles = {
     width: '100%',
     height: '100%',
   },
-      // ... other styles here
   bird: {
     position: 'absolute',
     width: 50,
