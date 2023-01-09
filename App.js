@@ -202,7 +202,7 @@ export default function App() {
         backgroundBottom={backgroundBottom}
         xPosBackground={xPosBackground2}
       />
-      {isGameOver && <Text>{score}</Text>}
+      
       <Bird
         birdBottom={birdBottom}
         birdLeft={birdLeft}
@@ -233,6 +233,7 @@ export default function App() {
         groundBottom={groundBottom}
         xPosGround={xPosGround2}
       />
+      {isGameOver && <Text style = {{fontSize: 125, color: 'white'}}>{score}</Text>}
     </View>
     </TouchableWithoutFeedback>
   )
