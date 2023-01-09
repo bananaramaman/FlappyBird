@@ -9,12 +9,20 @@ const Bird = ({ birdBottom, birdLeft }) => {
     <>
     <Animated.View style={{
       position: 'absolute',
+      //backgroundColor: 'green',
       width: birdWidth,
       height: birdHeight,
       left: birdLeft - (birdWidth / 2),
       bottom: birdBottom 
       }}>
-        <Image source={require('../assets/bird.png')} />
+        <Image 
+        style={{ 
+          flex: 1,
+          transform: [{scale: 1.3}],
+          }} 
+        resizeMode="cover" 
+        source={require('../assets/bird.png')}
+        />
         </Animated.View>
     </>
   )
