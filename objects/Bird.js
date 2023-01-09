@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Image, Animated } from 'react-native';
 
-const birdWidth = 50;
+const birdWidth = 55;
 const birdHeight = 45;
 
 const Bird = ({ birdBottom, birdLeft }) => {

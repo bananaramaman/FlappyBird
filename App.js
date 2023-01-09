@@ -11,12 +11,12 @@ export default function App() {
   const birdLeft = screenWidth / 2
   const [birdBottom, setBirdBottom ] = useState(screenHeight/2)
   const [obstacleOne, setObstaclesOne] = useState(screenWidth)
-  const [obstacleTwo, setObstaclesTwo] = useState(screenWidth + screenWidth/2 + 60)
+  const [obstacleTwo, setObstaclesTwo] = useState(screenWidth + screenWidth/2 + 45)
   const [obstacleHeightV, setObstaclesHeightV] = useState(0)
   const [obstacleHeightV2, setObstaclesHeightV2] = useState(0)
   const [score, setScore] = useState(0)
   const [speed, setSpeed] = useState(5)
-  const obstacleWidth = 120
+  const obstacleWidth = 90
   const obstacleHeight = screenHeight/2
   const gap = 200
   const gravity =3
@@ -160,13 +160,13 @@ export default function App() {
   useEffect(() => {
     if (
     ((birdBottom < (obstacleHeightV + obstacleHeight + 0) ||
-    birdBottom > (obstacleHeightV + obstacleHeight + gap -50)) &&
-    (obstacleOne > screenWidth/2 -60 && obstacleOne < screenWidth/2 + 30)
+    birdBottom > (obstacleHeightV + obstacleHeight + gap -45)) &&
+    (obstacleOne > screenWidth/2 -50 && obstacleOne < screenWidth/2 + 35)
     )
     ||
     ((birdBottom < (obstacleHeightV2 + obstacleHeight + 0) ||
-    birdBottom > (obstacleHeightV2 + obstacleHeight + gap -50)) &&
-    (obstacleTwo > screenWidth/2 -60 && obstacleTwo < screenWidth/2 + 30)
+    birdBottom > (obstacleHeightV2 + obstacleHeight + gap -45)) &&
+    (obstacleTwo > screenWidth/2 -50 && obstacleTwo < screenWidth/2 + 35)
     )
     )
     {

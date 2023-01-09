@@ -19,7 +19,7 @@ const Obstacles = ({
         left: obstacleOne,
         bottom: HeightVariation,
       }}>
-        <Image source={require('../assets/obstacleOne.png')}  style={{ flex: 1}} resizeMode="cover"/>
+        <Image source={require('../assets/obstacleOne.png')}  style={{ flex: 1, left: -17.5}} resizeMode="contain"/>
         </Animated.View>
 
       <Animated.View style={{
@@ -30,7 +30,7 @@ const Obstacles = ({
         left: obstacleOne,
         bottom: HeightVariation + obstacleHeight + gap,
       }}>
-        <Image source={require('../assets/obstacleTwo.png')} style={{ flex: 1}} resizeMode="cover"/>
+        <Image source={require('../assets/obstacleTwo.png')} style={{ flex: 1, left: -17.5}}  resizeMode="contain"/>
         </Animated.View>
     </>
   )
